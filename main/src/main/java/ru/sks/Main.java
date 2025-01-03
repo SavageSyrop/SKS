@@ -80,7 +80,7 @@ public class Main {
                         System.out.println("Количество переходов обновлено");
                         break;
                     case "7":
-                        System.out.print("Введите коротку ссылку для перехода по ней: ");
+                        System.out.print("Введите короткую ссылку, которую хотите удалить: ");
                         String urlToDelete = sc.nextLine();
 
                         managerImpl.deleteUrlByShortUrl(urlToDelete);

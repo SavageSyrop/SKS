@@ -36,7 +36,7 @@ public class ManagerImpl implements Manager {
         if (this.currentUserUUID == null) {
             System.out.println("Вам был выдан UUID: " + register() + ". Используйте его для дальнейшего взаимодействия с созданными ссылками");
         }
-        String shortUrl = configuration.getBaseUrl() + UUID.randomUUID();
+        String shortUrl = configuration.getBaseUrl() + UUID.randomUUID().toString().replace("-","").substring(0,6);
         ShortUrl newShortUrl = new ShortUrl(longUrl, shortUrl, this.currentUserUUID, Math.max(usagesCount, configuration.getMinUsages()), Math.min(validUntilInSeconds, Instant.now().getEpochSecond() + configuration.getMaxUrlLifetime()));
         List<ShortUrl> list = this.userToUrlsMap.get(this.currentUserUUID);
         list.add(newShortUrl);
