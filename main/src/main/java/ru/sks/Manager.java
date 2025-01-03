@@ -1,25 +1,36 @@
 package ru.sks;
 
+import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
+
+import java.util.List;
+import java.util.Objects;
+
+@Service
 public interface Manager {
-    boolean isUrlTimeValid(long urlLifeLimit);
 
-    void deleteUrl();
+    void deleteUrlByShortUrl(String shortUrlToDelete) throws Exception;
 
-    ShortUrl createUrl();
+    ShortUrl createUrl(String longUrl, long usagesCount, long validUntilInSeconds) throws Exception;
 
-    ShortUrl findUrlByShortUrl();
+    ShortUrl findUrlByShortUrl(String shortUrl) throws Exception;
 
-    ShortUrl editUrlLimit();
+    ShortUrl useShortUrl(String shortUrl) throws Exception;
 
-    default boolean isOwnerOfUrl(ShortUrl url, String uuid) {
-        return uuid.equals(url.getCreatorUUID());
-    }
+    ShortUrl editUrlUsageLimit(String shortUrl, long newUsagesCount) throws Exception;
 
-    void login();
+    ShortUrl editUrlTimeLimit(String shortUrl, long urlTimeLimit) throws Exception;
 
-    void logout();
+    void login(String uuid) throws Exception;
 
-    String register();
+    void logout() throws Exception;
+
+    String register() throws Exception;
 
     String whoAmI();
+    List<ShortUrl> getUrlByCreatorUUID() throws Exception;
+
+    default boolean isOwnerOfUrl(ShortUrl url, String uuid) {
+        return Objects.equals(url.getCreatorUUID(),uuid);
+    }
 }

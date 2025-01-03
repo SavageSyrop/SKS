@@ -4,10 +4,10 @@ public class ShortUrl {
     private String originalUrl;
     private String shortUrl;
     private String creatorUUID;
-    private int usagesLeft;
+    private long usagesLeft;
     private long validUntil;
 
-    public ShortUrl(String originalUrl, String shortUrl, String creatorUUID, int usagesLeft, long validUntil) {
+    public ShortUrl(String originalUrl, String shortUrl, String creatorUUID, long usagesLeft, long validUntil) {
         this.originalUrl = originalUrl;
         this.shortUrl = shortUrl;
         this.creatorUUID = creatorUUID;
@@ -39,11 +39,11 @@ public class ShortUrl {
         this.creatorUUID = creatorUUID;
     }
 
-    public int getUsagesLeft() {
+    public long getUsagesLeft() {
         return usagesLeft;
     }
 
-    public void setUsagesLeft(int usagesLeft) {
+    public void setUsagesLeft(long usagesLeft) {
         this.usagesLeft = usagesLeft;
     }
 
